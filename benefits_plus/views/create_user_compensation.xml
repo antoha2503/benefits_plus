@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="create_user_compensation_form" model="ir.ui.view">
+        <field name="name">create.user.compensation.form</field>
+        <field name="model">create.user.compensation.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="employee_id"/>
+                </header>
+                <group>
+                    <field name="total_compensation"/>
+                    <field name="type_compensation" create="false" options="{'no_create': True, 'no_create_edit': True}"/>
+                    <field name="attachment_ids" widget="many2many_binary"/>
+                </group>
+                <footer>
+                    <button name="add_compensation_user" string="Confirm" type="object" class="btn_primary"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

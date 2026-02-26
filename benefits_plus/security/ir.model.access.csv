@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_benefits_dashboard,access_benefits_dashboard,model_benefits_dashboard,,1,1,1,1
+access_category_compensation,access_category_compensation,model_category_compensation,,1,1,1,1
+access_create_user_compensation_wizard,access_create_user_compensation_wizard,model_create_user_compensation_wizard,,1,1,1,1
+access_user_compensation,access_user_compensation,model_user_compensation,,1,1,1,1
+access_edit_total_compensation,access_edit_total_compensation,model_edit_total_compensation,,1,1,1,1
