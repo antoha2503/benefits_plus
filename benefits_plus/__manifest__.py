@@ -2,6 +2,7 @@
     "name": "Benefits Dashboard Plus",
     "version": "1.0.0",
     "category": "Human Resources",
+    'application': True,
     "summary": "Benefits Dashboard+ transforms corporate compensation into a transparent, automated, and fully controlled process inside Odoo.",
     "description": "Provide employees with a structured benefit budget and manage reimbursement requests with clarity, speed, and financial accuracy.",
     "author": "Anton Tytenko",
@@ -10,14 +11,15 @@
     'currency': 'USD',
     'images': ['static/description/icon.png'],
     "depends": [
-        "account",
         "base",
+        "account",
         'mail',
         'hr',
         "purchase"
     ],
     "data": [
         "security/groups_rules.xml",
+        # "views/res_users_views.xml",
         "views/edit_total_compensation.xml",
         "views/coordination.xml",
         "views/add_benefits_employee.xml",

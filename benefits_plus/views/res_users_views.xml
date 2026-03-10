@@ -3,16 +3,17 @@
     <record id="view_users_form_inherit_benefits" model="ir.ui.view">
         <field name="name">res.users.form.inherit.benefits</field>
         <field name="model">res.users</field>
-        <field name="inherit_id" ref="base.view_users_form"/>>
+        <field name="inherit_id" ref="base.view_users_form"/>
         <field name="arch" type="xml">
-            <!-- На вашем скрине страница называется access_rights, а внутри группа Roles -->
-            <xpath expr="//page[@name='access_rights']/group[1]" position="after">
+            <xpath expr="//page[@name='access_rights']//group[last()]" position="after">
                 <group string="Дополнительные права (Benefits)">
-                    <field name="has_group_benefits"/>>
+                    <!-- Исправленный домен без функции ref() -->
+                    <field name="group_ids"
+                           widget="many2many_checkboxes"
+                           domain="[('id', '=', %(benefits_plus.group_benefits_manager)d)]"/>
                 </group>
             </xpath>
         </field>
     </record>
-
 
 </odoo>

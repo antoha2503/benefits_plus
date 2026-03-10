@@ -4,4 +4,3 @@ from . import create_user_compensation_wizard
 from . import user_compensation
 from . import custom_field_HrEmployee
 from . import edit_total_compensation
-from . import my_res_users
