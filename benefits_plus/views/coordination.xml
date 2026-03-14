@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="coordination_approve" model="ir.actions.server">
+            <field name="name">Approve compensation</field>
+            <field name="model_id" ref="model_user_compensation"/>
+            <field name="binding_model_id" ref="model_user_compensation"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">records.approve_compensation()</field>
+        </record>
+
+        <record id="coordination_canceled" model="ir.actions.server">
+            <field name="name">Canceled compensation</field>
+            <field name="model_id" ref="model_user_compensation"/>
+            <field name="binding_model_id" ref="model_user_compensation"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">records.canceled_compensation()</field>
+        </record>
+
+        <record id="edit_total_employee" model="ir.actions.server">
+            <field name="name">Edit total</field>
+            <field name="model_id" ref="model_benefits_dashboard"/>
+            <field name="binding_model_id" ref="model_benefits_dashboard"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">
+action = records.button_edit_total_employee()
+            </field>
+        </record>
+    </data>
+</odoo>

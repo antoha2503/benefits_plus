@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="benefits_dashboard_form" model="ir.ui.view">
+        <field name="name">benefits.dashboard.form</field>
+        <field name="model">benefits.dashboard</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false" delete="false">
+                <header>
+                    <button name="button_submit_compensation" type="object" class="btn-primary" string="Add compensation"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="total" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="History compensation">
+                            <field name="history_ids" nolabel="1">
+                                <tree create="false" edit="false" delete="false">
+                                    <field name="type_compensation"/>
+                                    <field name="amount"/>
+                                    <field name="date_create"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Waiting compensation">
+                            <field name="waiting_ids" nolabel="1">
+                                <tree create="false" edit="false" delete="false">
+                                    <field name="type_compensation"/>
+                                    <field name="amount"/>
+                                    <field name="date_create"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="action_benefits_dashboard" model="ir.actions.server">
+        <field name="name">Benefits Dashboard</field>
+        <field name="model_id" ref="model_benefits_dashboard"/>
+        <field name="state">code</field>
+        <field name="code">
+    action = model.open_dashboard()
+        </field>
+    </record>
+
+</odoo>

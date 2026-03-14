@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_employee_form_inherit_benefits" model="ir.ui.view">
+        <field name="name">hr.employee.form.benefits</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[contains(@class,'oe_title')]" position="inside">
+
+                <field name="show_benefits" invisible="1"/>
+
+                <h5 invisible="not show_benefits">
+                    <i class="fa fa-beer fa-fw me-1 text-primary"
+                       title="Benefits employee"/>
+
+                    <field name="benefits_total" readonly="1"/>
+                </h5>
+
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!--  FORM  -->
+    <record id="request_benefits_employee_form" model="ir.ui.view">
+        <field name="name">request.benefits.employee.form</field>
+        <field name="model">user.compensation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header groups="base.group_system">
+                    <button name="action_canceled" type="object"
+                            string="Canceled"
+                            invisible="state != 'waiting'"/>
+                    <button name="action_done" type="object"
+                            string="Approved"
+                            invisible="state != 'waiting'"/>
+                    <button name="send_email_employee" type="object"
+                            string="Send email employee"
+                            invisible="state == 'waiting'"/>
+                    <button name="create_account_move_user" type="object"
+                            string="Create account"
+                            invisible="state != 'done'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="waiting,done,canceled"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                         <button name="action_open_vendor_bill" string="Vendor Bill" type="object" class="oe_stat_button" icon="fa-university"/>
+                    </div>
+                    <group>
+                        <group string="Info">
+                            <field name="employee_id"/>
+                            <field name="type_compensation"/>
+                            <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="date_create"/>
+                        </group>
+                        <group string="Files">
+                            <field name="attachment_ids" widget="many2many_binary" string="Attached Files" nolabel="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+<!--LIST-->
+    <record id="request_benefits_employee_list" model="ir.ui.view">
+        <field name="name">request.benefits.employee.list</field>
+        <field name="model">user.compensation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="type_compensation"/>
+                <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <field name="date_create"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+<!--SEARCH(filter)-->
+    <record id="request_benefits_employee_search" model="ir.ui.view">
+        <field name="name">request.benefits.employee.search</field>
+        <field name="model">user.compensation</field>
+        <field name="arch" type="xml">
+            <search>
+                <group>
+                    <filter string="By State" name="group_by_state" domain="[]" context="{'group_by':'state'}"/>
+                    <filter string="By employee" name="group_by_employee" domain="[]" context="{'group_by':'employee_id'}"/>
+                </group>
+                <searchpanel>
+                    <field name="employee_id" icon="fa-filter" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+<!--KANBAN-->
+   <record id="request_benefits_employee_kanban" model="ir.ui.view">
+    <field name="name">request.benefits.employee.kanban</field>
+    <field name="model">user.compensation</field>
+    <field name="arch" type="xml">
+        <kanban default_group_by="state" records_draggable="true" class="o_kanban_small_column" default_order="state desc">
+            <field name="type_compensation"/>
+            <field name="employee_id"/>
+            <field name="amount"/>
+
+            <templates>
+                <t t-name="card">
+                    <div class="oe_kanban_card">
+                        <strong>
+                            <field name="employee_id"/>
+                        </strong>
+
+                        <div>
+                            <field name="amount"/>
+                        </div>
+
+                        <div>
+                            <field name="type_compensation"/>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
+<!--ACTION-->
+    <record id="action_request_benefits_employee" model="ir.actions.act_window">
+        <field name="name">Request benefits</field>
+        <field name="res_model">user.compensation</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{'search_default_group_by_state': 1}</field>
+    </record>
+</odoo>
