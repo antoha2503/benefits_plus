@@ -5,7 +5,7 @@
     'application': True,
     "summary": "Benefits Dashboard+ transforms corporate compensation into a transparent, automated, and fully controlled process inside Odoo.",
     "description": "Provide employees with a structured benefit budget and manage reimbursement requests with clarity, speed, and financial accuracy.",
-    "author": "Anton Tytenko",
+    "author": "TytencoSoft",
     "license": "LGPL-3",
     'price': "9.99",
     'currency': 'USD',
