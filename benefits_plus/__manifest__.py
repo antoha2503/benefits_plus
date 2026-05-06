@@ -7,7 +7,7 @@
     "description": "Provide employees with a structured benefit budget and manage reimbursement requests with clarity, speed, and financial accuracy.",
     "author": "TytencoSoft",
     "license": "LGPL-3",
-    'price': "9.99",
+    'price': "0",
     'currency': 'USD',
     'images': ['static/description/icon_screenshot.png'],
     "depends": [
