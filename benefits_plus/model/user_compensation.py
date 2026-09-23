@@ -24,7 +24,7 @@ class UserCompensation(models.Model):
     # Поле для отображения прикрепленных файлов
     attachment_ids = fields.Many2many(
         'ir.attachment',
-        relation='user_compensation_attachment_rel',
+        inverse='_inverse_attachment_ids',
         column1='compensation_id',
         column2='attachment_id',
         compute='_compute_attachment_ids',
@@ -33,10 +33,25 @@ class UserCompensation(models.Model):
 
     def _compute_attachment_ids(self):
         for record in self:
-            record.attachment_ids = self.env['ir.attachment'].search([
-                ('res_model', '=', self._name),
-                ('res_id', '=', record.id)
-            ])
+            if record.id:
+                attachments = self.env['ir.attachment'].search([
+                    ('res_model', '=', self._name),
+                    ('res_id', '=', record.id)
+                ])
+                # В Odoo 17 для computed many2many нужно передавать именно IDs
+                record.attachment_ids = attachments.ids
+            else:
+                record.attachment_ids = False
+
+    def _inverse_attachment_ids(self):
+        for record in self:
+            # Находим вложения, которые пользователь только что добавил на форме
+            for attachment in record.attachment_ids:
+                if not attachment.res_id:
+                    attachment.write({
+                        'res_model': self._name,
+                        'res_id': record.id,
+                    })
     def send_email_employee(self):
         for record in self:
             if record.state == 'done':
