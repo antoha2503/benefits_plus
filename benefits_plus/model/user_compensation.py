@@ -22,7 +22,7 @@ class UserCompensation(models.Model):
     date_create = fields.Date(string='Date', default=fields.Date.context_today, readonly=True)
 
     # Поле для отображения прикрепленных файлов
-attachment_ids = fields.Many2many(
+    attachment_ids = fields.Many2many(
         'ir.attachment',
         inverse='_inverse_attachment_ids',
         column1='compensation_id',
