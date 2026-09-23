@@ -1,6 +1,6 @@
 {
     "name": "Benefits Dashboard Plus",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "category": "Human Resources",
     'application': True,
     "summary": "Benefits Dashboard+ transforms corporate compensation into a transparent, automated, and fully controlled process inside Odoo.",
