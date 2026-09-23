@@ -33,7 +33,7 @@
                             <field name="date_create"/>
                         </group>
                         <group string="Files">
-                            <field name="attachment_ids" widget="many2many_binary" string="Attached Files" nolabel="1"/>
+                            <field name="attachment_ids" style="width:500px" widget="many2many_binary" string="Attached Files" nolabel="1"/>
                         </group>
                     </group>
                 </sheet>
