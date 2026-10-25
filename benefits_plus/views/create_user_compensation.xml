@@ -13,6 +13,16 @@
                     <field name="type_compensation" create="false" options="{'no_create': True, 'no_create_edit': True}"/>
                     <field name="attachment_ids" widget="many2many_binary"/>
                 </group>
+                <div class="alert alert-secondary mt-3 border-0 py-2 px-3 fs-6" role="alert" invisible="not type_compensation" style="background-color: #f8f9fa !important; border-left: 3px solid #6c757d !important;">
+                    <div class="d-flex align-items-start gap-2">
+                        <i class="fa fa-info-circle text-muted mt-1"/>
+                        <div class="w-100">
+                            <span class="fw-bold text-secondary small text-uppercase d-block mb-1">Description:</span>
+                            <!-- Поле с описанием: аккуратный серый текст с сохранением переносов -->
+                            <field name="description_compensation" class="text-muted text-pre-wrap mb-0 d-block"/>
+                        </div>
+                    </div>
+                </div>
                 <footer>
                     <button name="add_compensation_user" string="Confirm" type="object" class="btn_primary"/>
                     <button string="Cancel" class="oe_link" special="cancel"/>
