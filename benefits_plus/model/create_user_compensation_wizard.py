@@ -7,6 +7,7 @@ class CreateUserCompensation(models.TransientModel):
     total_compensation = fields.Monetary(currency_field='currency_id', string='Summa Compensation', readonly=False)
     employee_id = fields.Many2one('hr.employee', string='Employee', default=lambda self: self.env.user.employee_id, readonly=True, required=True)
     type_compensation = fields.Many2one('category.compensation', string='Type compensation', readonly=False, required=True)
+    description_compensation = fields.Text(string='Description compensation', readonly=True, related='type_compensation.description_type')
     currency_id = fields.Many2one('res.currency', default=lambda self: self.env.company.currency_id)
 
     attachment_ids = fields.Many2many('ir.attachment', string="Attachments", required=True)
