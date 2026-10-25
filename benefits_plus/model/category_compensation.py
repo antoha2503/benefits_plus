@@ -6,3 +6,4 @@ class CategoryCompensation(models.Model):
     _rec_name = "name"
 
     name = fields.Char(string="Name", required=True)
+    description_type = fields.Text(string="Description Type", help="Description Type")
